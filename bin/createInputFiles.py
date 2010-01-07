@@ -14,6 +14,7 @@
 #
 #	   field 3: gene
 #	   field 4: gene id
+#	   field 5: ccds id
 #
 # Outputs:
 #	 A tab-delimited file in assocload format:
@@ -104,16 +105,24 @@ assocFile.write('%s%s%s%s' % ('MGI', TAB, 'CCDS', CRT))
 # throw away header line
 header = inFile.readline()
 
+# list to keep track of dups
+assocID = []
+
 for line in inFile.readlines():
 
     tokens = string.split(line, TAB)
     gene = tokens[2]
-    ccdsID = string.replace(tokens[3], 'CCDS', '')
+    geneID = tokens[3]
+    ccdsID = string.replace(tokens[4], 'CCDS', '')
 
-    if egID.has_key(ccdsID):
-        assocFile.write('%s%s%s%s' % (egID[ccdsID], TAB, ccdsID, CRT))
+    if egID.has_key(geneID):
+	if egID[geneID] not in assocID:
+            assocFile.write('%s%s%s%s' % (egID[geneID], TAB, ccdsID, CRT))
+	    assocID.append(egID[geneID])
+        else:
+	    print 'Duplicate:  %s, gene ID: %s, ccdsID: %s\n' % (gene, geneID, ccdsID)
     else:
-	print 'Invalid EntrezGene ID:  %s, %s\n' % (gene, ccdsID)
+	print 'Invalid EntrezGene ID:  %s, gene ID: %s, ccdsID: %s\n' % (gene, geneID, ccdsID)
 
 #
 # Post Process
