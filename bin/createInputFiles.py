@@ -113,7 +113,8 @@ for line in inFile.readlines():
     tokens = string.split(line, TAB)
     gene = tokens[2]
     geneID = tokens[3]
-    ccdsID = string.replace(tokens[4], 'CCDS', '')
+    ccdsID = tokens[4]
+    #ccdsID = string.replace(tokens[4], 'CCDS', '')
 
     if egID.has_key(geneID):
 	if egID[geneID] not in assocID:

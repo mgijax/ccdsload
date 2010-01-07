@@ -65,7 +65,7 @@ LOG_DEBUG=false
 export LOG_PROC LOG_DIAG LOG_CUR LOG_VAL LOG_DEBUG
 
 #  The J-Number for the load
-J_NUMBER=J:?
+J_NUMBER=J:155721
 
 #  The name of the job stream for the load
 JOBSTREAM=ccdsload
