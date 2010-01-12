@@ -44,6 +44,7 @@ import db
 print '%s' % mgi_utils.date()
 
 # paths to input and two output files
+ldbname = os.environ['ASSOC_EXTERNAL_LDB']
 inFilePath = os.environ['INFILE_NAME_CCDS']
 assocFilePath= os.environ['INFILE_NAME']
 
@@ -100,7 +101,7 @@ for r in results:
 #
 
 # write out assocload header
-assocFile.write('%s%s%s%s' % ('MGI', TAB, 'CCDS', CRT))
+assocFile.write('%s%s%s%s' % ('MGI', TAB, ldbname, CRT))
 
 # throw away header line
 header = inFile.readline()
