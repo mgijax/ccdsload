@@ -81,8 +81,8 @@ results = db.sql('''
         from ACC_Accession a, ACC_Accession aa, MRK_Marker m
         where a._MGIType_key = 2 
         and a._LogicalDB_key = 55 
-        and a.preferred = 1
         and a._Object_key = aa._Object_key
+        and a.preferred = 1
         and aa._MGIType_key = 2 
         and aa._LogicalDB_key = 1
         and aa.preferred = 1
@@ -106,23 +106,15 @@ assocFile.write('%s%s%s%s' % ('MGI', TAB, ldbname, CRT))
 # throw away header line
 header = inFile.readline()
 
-# list to keep track of dups
-assocID = []
-
 for line in inFile.readlines():
 
     tokens = string.split(line, TAB)
     gene = tokens[2]
     geneID = tokens[3]
     ccdsID = tokens[4]
-    #ccdsID = string.replace(tokens[4], 'CCDS', '')
 
     if egID.has_key(geneID):
-	if egID[geneID] not in assocID:
-            assocFile.write('%s%s%s%s' % (egID[geneID], TAB, ccdsID, CRT))
-	    assocID.append(egID[geneID])
-        else:
-	    print 'Duplicate:  %s, gene ID: %s, ccdsID: %s\n' % (gene, geneID, ccdsID)
+        assocFile.write('%s%s%s%s' % (egID[geneID], TAB, ccdsID, CRT))
     else:
 	print 'Invalid EntrezGene ID:  %s, gene ID: %s, ccdsID: %s\n' % (gene, geneID, ccdsID)
 
