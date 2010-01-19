@@ -46,7 +46,7 @@ OUTPUTDIR=${FILEDIR}/output
 # directory where input files for vocload and assocload are created by
 # createInputFiles.py
 INPUTDIR=${FILEDIR}/input
-INFILE_NAME_CCDS=${DATADOWNLOADS}/ftp.ncbi.nih.gov/pub/CCDS/current_mouse/CCDS.current.txt
+INFILE_NAME_CCDS=${DATADOWNLOADS}/ccds_mus/CCDS.current.txt
 # ASSOCLOAD expects this parameter name
 INFILE_NAME=${INPUTDIR}/ccdsassoc.txt
 
