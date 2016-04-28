@@ -80,7 +80,7 @@ except:
 # Get Primary Mouse Markers/EntrezGene IDs
 #
 results = db.sql('''
-        select a.accID, a._Object_key, mgiID = aa.accID
+        select a.accID, a._Object_key, aa.accID as mgiID
         from ACC_Accession a, ACC_Accession aa, MRK_Marker m
         where a._MGIType_key = 2 
         and a._LogicalDB_key = 55 
