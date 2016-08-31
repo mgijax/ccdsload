@@ -1,4 +1,11 @@
-TAG: ccdsload-6-0-4-?
+TAG: ccdsload-6-0-5-1
+DATE: 08/31/2016
+STAFF: lec 
+CHANGES:
+TR11083/Retire/Archive Nomenclature Table (NOM_Marker)
+ _Marker_Status_key != 2  changed to "= 1"
+
+TAG: ccdsload-6-0-4-1
 DATE: 04/28/2016
 STAFF: lec 
 CHANGES: TR12069/postgres cleanup

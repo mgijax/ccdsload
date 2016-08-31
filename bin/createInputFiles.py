@@ -91,7 +91,7 @@ results = db.sql('''
         and aa.preferred = 1
 	and a._Object_key = m._Marker_key
 	and m._Organism_key = 1
-	and m._Marker_Status_key != 2
+	and m._Marker_Status_key = 1
         ''', 'auto')
 egID = {}
 for r in results:
