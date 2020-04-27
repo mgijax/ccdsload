@@ -1,5 +1,3 @@
-#!/usr/local/bin/python
-
 ##########################################################################
 #
 # Purpose:
@@ -38,10 +36,9 @@
 import sys
 import os
 import mgi_utils
-import string
 import db
 
-print '%s' % mgi_utils.date()
+print('%s' % mgi_utils.date())
 
 # paths to input and two output files
 ldbname = os.environ['ASSOC_EXTERNAL_LDB']
@@ -86,9 +83,9 @@ results = db.sql('''
         and aa._MGIType_key = 2 
         and aa._LogicalDB_key = 1
         and aa.preferred = 1
-	and a._Object_key = m._Marker_key
-	and m._Organism_key = 1
-	and m._Marker_Status_key = 1
+        and a._Object_key = m._Marker_key
+        and m._Organism_key = 1
+        and m._Marker_Status_key = 1
         ''', 'auto')
 egID = {}
 for r in results:
@@ -108,15 +105,15 @@ header = inFile.readline()
 
 for line in inFile.readlines():
 
-    tokens = string.split(line, TAB)
+    tokens = str.split(line, TAB)
     gene = tokens[2]
     geneID = tokens[3]
     ccdsID = tokens[4]
 
-    if egID.has_key(geneID):
+    if geneID in egID:
         assocFile.write('%s%s%s%s' % (egID[geneID], TAB, ccdsID, CRT))
     else:
-	print 'Invalid EntrezGene ID:  %s, gene ID: %s, ccdsID: %s\n' % (gene, geneID, ccdsID)
+        print('Invalid EntrezGene ID:  %s, gene ID: %s, ccdsID: %s\n' % (gene, geneID, ccdsID))
 
 #
 # Post Process
@@ -125,4 +122,4 @@ for line in inFile.readlines():
 inFile.close()
 assocFile.close()
 
-print '%s' % mgi_utils.date()
+print('%s' % mgi_utils.date())

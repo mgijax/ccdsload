@@ -96,7 +96,7 @@ preload ${OUTPUTDIR}
 # create input files
 #
 echo 'Running createInputFiles.py' >> ${LOG_DIAG}
-${CCDSLOAD}/bin/createInputFiles.py >> ${LOG_DIAG}
+${PYTHON} ${CCDSLOAD}/bin/createInputFiles.py >> ${LOG_DIAG}
 STAT=$?
 checkStatus ${STAT} "${CCDSLOAD}/bin/createInputFiles.py"
 
